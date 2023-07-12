@@ -19,12 +19,20 @@ void batBom() {
 
 void guiTinNhan () {
   Serial.println("Bom da duoc bat");
-  delay(30000);
+  for (int i = 30; i >= 0; i--) {
+    Serial.print("Bom se tat sau ");
+    Serial.print(i);
+    Serial.println(" giay");
+    delay(1000);
+  }
+  //delay(30000);
   Serial.println("Bom da tat");
 }
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("cam bien nuoc da duoc kich hoat");
+  Serial.println("--");
   pinMode(8, INPUT);
   pinMode(relay, OUTPUT);
   pinMode(13, OUTPUT);
@@ -38,6 +46,5 @@ void loop() {
   if ( val == 1 and preVal == 0 ) {
     xuLi();
   }
-
   preVal = val;
 }
