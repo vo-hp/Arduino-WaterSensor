@@ -112,30 +112,23 @@ void turnLed() {
 }
 
 void star() {
-  if (perCent < 5) {
-  }
-  if (perCent > 5) {
-    if (perCent <= 20) {
-      lcd.setCursor(8, 1);
-      lcd.write(0);
-    }
+  if (perCent <= 20) {
+    lcd.setCursor(8, 1);
+    lcd.write(0);
   }
   if (perCent <= 40) {
-    if (perCent > 20) {
-      lcd.setCursor(10, 1);
-      lcd.write(0);
-      lcd.write(1);
-    }
+    lcd.setCursor(10, 1);
+    lcd.write(1);
   }
-  if (perCent <= 60 and perCent > 40) {
+  if (perCent <= 60) {
     lcd.setCursor(12, 1);
     lcd.write(2);
   }
-  if (perCent <= 80 and perCent > 60) {
+  if (perCent <= 80) {
     lcd.setCursor(14, 1);
     lcd.write(3);
   }
-  if (perCent <= 100 and perCent > 80) {
+  if (perCent <= 100) {
     lcd.setCursor(16, 1);
     lcd.write(4);
   }
