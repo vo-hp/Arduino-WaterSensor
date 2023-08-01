@@ -22,7 +22,6 @@ byte ngoisao[] = {
   B00000
 };
 
-
 byte trong[] = {
   B00000,
   B00000,
@@ -79,7 +78,6 @@ void turnLed() {
   }
 }
 
-
 void star() {
   if (perCent > 5) {
     lcd.setCursor(7, 1);
@@ -92,7 +90,6 @@ void star() {
     lcd.write(1);
     lcd.setCursor(15, 1);
     lcd.write(1);
-
   }
   if (perCent > 20) {
     lcd.setCursor(9, 1);
@@ -115,7 +112,6 @@ void star() {
     lcd.write(1);
   }
 }
-
 
 void setup() {
   Serial.begin(9600);
