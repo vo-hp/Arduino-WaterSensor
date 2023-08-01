@@ -11,7 +11,7 @@ int led4 = 9;
 int led5 = 10;
 int perCent;
 
-byte ngoisao1[] = {
+byte ngoisao[] = {
   B00000,
   B00100,
   B10101,
@@ -22,49 +22,17 @@ byte ngoisao1[] = {
   B00000
 };
 
-byte ngoisao2[] = {
-  B00000,
-  B00100,
-  B10101,
-  B01110,
-  B00100,
-  B01010,
-  B10001,
-  B00000
-};
 
-byte ngoisao3[] = {
+byte trong[] = {
   B00000,
-  B00100,
-  B10101,
-  B01110,
-  B00100,
-  B01010,
-  B10001,
-  B00000
-};
-
-byte ngoisao4[] = {
   B00000,
-  B00100,
-  B10101,
-  B01110,
-  B00100,
-  B01010,
-  B10001,
-  B00000
-};
-
-byte ngoisao5[] = {
   B00000,
-  B00100,
-  B10101,
-  B01110,
-  B00100,
-  B01010,
-  B10001,
+  B00000,
+  B00000,
+  B00000,
+  B00000,
   B00000
-};
+}; 
 
 void turnLed() {
   if (val > 120) {  //410
@@ -111,26 +79,52 @@ void turnLed() {
   }
 }
 
+
 void star() {
-  if (perCent <= 20) {
-    lcd.setCursor(8, 1);
+  if (perCent > 5) {
+    lcd.setCursor(7, 1);
     lcd.write(0);
+    lcd.setCursor(9, 1);
+    lcd.write(1);
+    lcd.setCursor(11, 1);
+    lcd.write(1);
+    lcd.setCursor(13, 1);
+    lcd.write(1);
+    lcd.setCursor(15, 1);
+    lcd.write(1);
+
   }
-  if (perCent <= 40) {
-    lcd.setCursor(10, 1);
+  if (perCent > 20) {
+    lcd.setCursor(9, 1);
+    lcd.write(0);
+    lcd.setCursor(11, 1);
+    lcd.write(1);
+    lcd.setCursor(13, 1);
+    lcd.write(1);
+    lcd.setCursor(15, 1);
     lcd.write(1);
   }
-  if (perCent <= 60) {
-    lcd.setCursor(12, 1);
-    lcd.write(2);
+  if (perCent > 40) {
+    lcd.setCursor(11, 1);
+    lcd.write(0);
+    lcd.setCursor(13, 1);
+    lcd.write(1);
+    lcd.setCursor(15, 1);
+    lcd.write(1);
   }
-  if (perCent <= 80) {
-    lcd.setCursor(14, 1);
-    lcd.write(3);
+  if (perCent > 60) {
+    lcd.setCursor(13, 1);
+    lcd.write(0);
+    lcd.setCursor(15, 1);
+    lcd.write(1);
   }
-  if (perCent <= 100) {
-    lcd.setCursor(16, 1);
-    lcd.write(4);
+  if (perCent > 80) {
+    lcd.setCursor(15, 1);
+    lcd.write(0);
+  }
+  if (perCent <= 5) {
+    lcd.setCursor(7, 1);
+    lcd.write(1);
   }
 }
 
@@ -140,20 +134,19 @@ void setup() {
   pinMode(A0, INPUT_PULLUP);
   lcd.init();
   lcd.backlight();
-  lcd.createChar(0, ngoisao1);
-  lcd.createChar(1, ngoisao2);
-  lcd.createChar(2, ngoisao3);
-  lcd.createChar(3, ngoisao4);
-  lcd.createChar(4, ngoisao5);
+  lcd.createChar(0, ngoisao);
+  lcd.createChar(1, trong);
 }
 
 void loop() {
   val = analogRead(A0);
   Serial.println(val);
   turnLed();
-  perCent = map(val, 0, 685, 1, 100);
-  String percent = String(perCent) + "%";
+  perCent = map(val, 0, 690, 1, 100);
+  String percent = String(perCent) + "%" ;
   lcd.setCursor(12, 0);
-  lcd.print(percent);
+  lcd.print(perCent);
+  // lcd.setCursor(15, 0);
+  // lcd.print("%");
   star();
 }
