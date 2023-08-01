@@ -136,24 +136,33 @@ void setup() {
   lcd.backlight();
   lcd.createChar(0, ngoisao);
   lcd.createChar(1, trong);
+  lcd.setCursor(6, 0);
+  lcd.print("Level:");
 }
 
 void loop() {
   val = analogRead(A0);
   Serial.println(val);
   turnLed();
-  perCent = map(val, 16, 670, 0, 100); //16
-  if ( perCent < 11) {
+  perCent = map(val, 16, 680, 0, 100); // 0-16 and 670-700
+  if ( perCent < 11 and perCent > 0) {
     lcd.setCursor(13, 0);
-    lcd.write(1);
-  }
-  if ( perCent != 100 ) {
+    lcd.print("%");
     lcd.setCursor(14, 0);
     lcd.write(1);
   }
+  if ( perCent != 100 and perCent > 10) {
+    lcd.setCursor(14, 0);
+    lcd.print("%");
+    lcd.setCursor(15, 0);
+    lcd.write(1);
+  }
+  if ( perCent == 100) {
+    lcd.setCursor(15 , 0);
+    lcd.print("%");
+  }
+
   lcd.setCursor(12, 0);
   lcd.print(perCent);
-  lcd.setCursor(15, 0);
-  lcd.print("%");
   star();
 }
