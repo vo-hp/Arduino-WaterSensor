@@ -97,26 +97,14 @@ void star() {
   if (perCent > 20) {
     lcd.setCursor(9, 1);
     lcd.write(0);
-    lcd.setCursor(11, 1);
-    lcd.write(1);
-    lcd.setCursor(13, 1);
-    lcd.write(1);
-    lcd.setCursor(15, 1);
-    lcd.write(1);
   }
   if (perCent > 40) {
     lcd.setCursor(11, 1);
     lcd.write(0);
-    lcd.setCursor(13, 1);
-    lcd.write(1);
-    lcd.setCursor(15, 1);
-    lcd.write(1);
   }
   if (perCent > 60) {
     lcd.setCursor(13, 1);
     lcd.write(0);
-    lcd.setCursor(15, 1);
-    lcd.write(1);
   }
   if (perCent > 80) {
     lcd.setCursor(15, 1);
@@ -161,7 +149,6 @@ void loop() {
     lcd.setCursor(15 , 0);
     lcd.print("%");
   }
-
   lcd.setCursor(12, 0);
   lcd.print(perCent);
   star();
