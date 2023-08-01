@@ -142,11 +142,18 @@ void loop() {
   val = analogRead(A0);
   Serial.println(val);
   turnLed();
-  perCent = map(val, 0, 690, 1, 100);
-  String percent = String(perCent) + "%" ;
+  perCent = map(val, 16, 670, 0, 100); //16
+  if ( perCent < 11) {
+    lcd.setCursor(13, 0);
+    lcd.write(1);
+  }
+  if ( perCent != 100 ) {
+    lcd.setCursor(14, 0);
+    lcd.write(1);
+  }
   lcd.setCursor(12, 0);
   lcd.print(perCent);
-  // lcd.setCursor(15, 0);
-  // lcd.print("%");
+  lcd.setCursor(15, 0);
+  lcd.print("%");
   star();
 }
