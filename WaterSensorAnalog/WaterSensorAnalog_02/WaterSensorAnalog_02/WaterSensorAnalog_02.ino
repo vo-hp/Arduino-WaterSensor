@@ -135,6 +135,10 @@ void loop() {
     lcd.setCursor(14, 0);
     lcd.write(1);
   }
+  if (perCent == 0) {
+    lcd.setCursor(13, 0);
+    lcd.print(%);
+  }
   if ( perCent != 100 and perCent > 10) {
     lcd.setCursor(14, 0);
     lcd.print("%");
